@@ -59,7 +59,9 @@ func init() {
 	n := 18
 	p1 := &n
 	v1 := *p1
-	fmt.Printf("n的内存地址为%p,根据n内存地址取值为%d\v", p1, v1)
+	fmt.Printf("n的内存地址为%p,根据n内存地址取值为%d\v\n", p1, v1)
+	// 99乘法表
+	multiplicationTest()
 }
 func mapSort() {
 	// 初始化随机数种子
@@ -78,11 +80,21 @@ func mapSort() {
 	for k, _ := range sourceMap {
 		keys = append(keys, k)
 	}
-	// 对keys配许
+	// 对keys排序
 	sort.Strings(keys)
 	fmt.Printf(" keys.len: %d, keys.cap: %d\n", len(keys), cap(keys))
 	//按照排序之后的keys遍历map
 	//for _, key := range keys {
 	//	fmt.Printf("key为%s的value为%d\n", key, sourceMap[key])
 	//}
+}
+
+// 9*9乘法表
+func multiplicationTest() {
+	for i := 1; i < 10; i++ {
+		for j := 1; j <= i; j++ {
+			fmt.Printf("%d * %d = %d ", j, i, i*j)
+		}
+		fmt.Println()
+	}
 }
