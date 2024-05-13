@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "go_study/base"
+	//_ "go_study/database"
 	"log"
 	"os"
 )

@@ -62,6 +62,45 @@ func init() {
 	fmt.Printf("n的内存地址为%p,根据n内存地址取值为%d\v\n", p1, v1)
 	// 99乘法表
 	multiplicationTest()
+	// 结构体
+	type user struct {
+		name       string
+		age        int
+		email      string
+		privileged bool
+	}
+	// 使用机构类型声明变量并初始化为零值
+	var bill user
+	fmt.Printf("bill type is %T, value is %v\n", bill, bill)
+	//lisa := user{
+	//	name:       "lisa",
+	//	age:        18,
+	//	email:      "lisa@gmail.com",
+	//	privileged: false,
+	//}
+	lisa := user{
+		"lisa", 18, "lisa@gmail.com", false,
+	}
+	fmt.Printf("lisa type is %T, value is %v\n", lisa, lisa)
+	type admin struct {
+		person user
+		level  string
+	}
+	jelly := admin{
+		user{
+			"jelly",
+			26,
+			"jelly@gmail.com",
+			true,
+		},
+		"0",
+	}
+	fmt.Printf("jelly type is %T, value is %v\n", jelly, jelly)
+	// 基于int64声明一个新类型
+	//type Duration int64
+	//var dur Duration
+	//dur = int64(1000) //Cannot use 'int64(1000)' (type int64) as the type Duration
+
 }
 func mapSort() {
 	// 初始化随机数种子
