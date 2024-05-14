@@ -96,12 +96,58 @@ func init() {
 		"0",
 	}
 	fmt.Printf("jelly type is %T, value is %v\n", jelly, jelly)
+
 	// 基于int64声明一个新类型
 	//type Duration int64
 	//var dur Duration
 	//dur = int64(1000) //Cannot use 'int64(1000)' (type int64) as the type Duration
-
+	n1 := Now()
+	fmt.Printf("n1: %v\n", n1)
 }
+
+type Time struct {
+	sec  int64
+	nsec int32
+	loc  *time.Location
+}
+
+type Duration int64
+
+func Now() Time {
+	sec, nsec := int64(1), int32(2)
+	fmt.Printf("sec type is %T\n", sec)
+	return Time{sec, nsec, time.Local}
+}
+func (t Time) Add(d Duration) Time {
+	t.sec += int64(d / 10)
+	nsec := int32(t.nsec) + int32(d%10)
+	if nsec > 10 {
+		t.sec++
+		nsec -= 10
+	} else if nsec < 0 {
+		t.sec--
+		nsec += 10
+	}
+	t.nsec = nsec
+	return t
+}
+
+// 指针共享
+
+// File  表示一个打开的文件描述符
+type File struct {
+	*file
+}
+
+// file 是*file的实际表示
+// 额外的一层结构保证没有哪一个os的客户端能够覆盖这些数据，如果覆盖这些数据，可能在变量终结时关闭错误的文件描述符
+type file struct {
+	fd   int
+	name string
+	//dirinfo *dirInfo
+	nepipe int32
+}
+
 func mapSort() {
 	// 初始化随机数种子
 	rand.Seed(time.Now().UnixNano())
