@@ -42,6 +42,7 @@ func (u *user) changeEmail(email string) {
 	u.email = email
 }
 func init() {
+	fmt.Printf("\033[1;33;40m%s\033[0m\n", "methodDemo")
 	testUser := userFunc{
 		"testUser",
 		f100,

@@ -8,6 +8,7 @@ import (
 )
 
 func init() {
+	fmt.Printf("\033[1;33;40m%s\033[0m\n", "base")
 	// map声明
 	var m1 map[string]string
 	m2 := make(map[string]string)

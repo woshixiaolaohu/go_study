@@ -8,6 +8,7 @@ import (
 )
 
 func init() {
+	fmt.Printf("\033[1;33;40m%s\033[0m\n", "mySqlDemo")
 	db, err := sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/DB_TEST_1")
 	db.Ping()
 	defer db.Close()

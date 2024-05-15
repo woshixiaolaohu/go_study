@@ -55,6 +55,7 @@ func f13(x int) func(int) int {
 	}
 }
 func init() {
+	fmt.Printf("\033[1;33;40m%s\033[0m\n", "funcDemo")
 	deferDemo()
 	f8(10, 1, 2, 3, 4, 5)
 	f9(f4)
